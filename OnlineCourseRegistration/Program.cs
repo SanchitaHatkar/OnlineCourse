@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using OnlineCourseRegistration.Data;
+
 namespace OnlineCourseRegistration
 {
     public class Program
@@ -5,6 +8,11 @@ namespace OnlineCourseRegistration
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<ApplicationDBContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Connstr"));
+            });
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

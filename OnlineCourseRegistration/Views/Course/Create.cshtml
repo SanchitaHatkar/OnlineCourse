@@ -1,0 +1,17 @@
+﻿@using OnlineCourseRegistration.ViewModel
+@model CreateCourseViewModel
+ 
+<div class="container mt-3 form-control">
+	<h3> Add Course</h3>
+	<hr />
+	<form method="post" asp-action="Create">
+		<div class="mb-3">
+			<label for="Name" class="form-label">Course Name</label>	<br />
+			<input asp-for="Name" class="form-control-sm"/> 
+		</div>
+		
+		<div class="mb-3 text-center">
+			<button type="submit" value="submit" class="btn btn-primary">ADD</button>
+		</div>
+	</form>
+</div>

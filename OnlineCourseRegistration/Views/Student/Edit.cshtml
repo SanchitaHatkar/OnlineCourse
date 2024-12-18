@@ -1,0 +1,64 @@
+﻿@using OnlineCourseRegistration.ViewModel
+@model CreateStudentViewModel
+ 
+<div class="container mt-3 form-control">
+	<h3> Registration Form</h3>
+	<hr />
+	<form method="post" asp-action="Edit">
+		<div class="mb-3">
+
+			<label for="StudentName" class="form-label">Student Name</label>	<br />
+			<input asp-for="StudentName" class="form-control-sm" placeholder="First Name" />
+		</div>
+		<div class="row">
+			<div class="mb-3 col-6">
+				<label for="DOB" class="form-label">Birth Date</label>	<br />
+				<input asp-for="DOB" class="form-control-sm" />
+			</div>
+			<div class="mb-3 col-6">
+				<label for="Gender" class="form-label">Gender</label>	<br />
+				<input asp-for="Gender" type="radio" value="Male" class="form-check-input" />Male
+				<input asp-for="Gender" type="radio" value="Female" class="form-check-input" />Female
+			</div>
+		</div>
+
+		<div class="mb-3">
+
+			<label for="Address" class="form-label">Student Address</label>	<br />
+			<input asp-for="Address" class="form-control" placeholder="Student Address" />
+		</div>
+		<div class="row">
+			<div class="mb-3 col-6">
+				<label for="City" class="form-label">City</label>	<br />
+				<input asp-for="City" class="form-control-sm" placeholder="City" />
+			</div>
+			<div class="mb-3 col-6">
+				<label for="Country" class="form-label">Country</label>	<br />
+				<input asp-for="Country" class="form-control-sm" placeholder="Country" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="mb-3 col-6">
+				<label for="Email" class="form-label">Email</label>	<br />
+				<input asp-for="Email" class="form-control-sm" placeholder="Email" />
+			</div>
+			<div class="mb-3 col-6">
+				<label for="Contactno" class="form-label">Contact Number</label>	<br />
+				<input asp-for="Contactno" class="form-control-sm" placeholder="Contactno" />
+			</div>
+		</div>
+		<div class="mb-3">
+			<label for="SelectedCourseID" class="form-label">Course</label>	<br />
+			<select asp-for="SelectedCourseID" class="form-select-sm">
+				<option value="">Select course</option>
+				@foreach (var @item in Model.Courses)
+				{
+					<option value="@item.Id">@item.Name</option>
+				}
+			</select>
+		</div>
+		<div class="mb-3 text-center">
+			<button type="submit" value="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+</div>

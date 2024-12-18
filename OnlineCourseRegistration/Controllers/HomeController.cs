@@ -1,5 +1,8 @@
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using OnlineCourseRegistration.Data;
 using OnlineCourseRegistration.Models;
 using OnlineCourseRegistration.ViewModel;
 
@@ -7,13 +10,12 @@ namespace OnlineCourseRegistration.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDBContext _Context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDBContext context)
         {
-            _logger = logger;
+            _Context = context; 
         }
-
         public IActionResult Index()
         {
             return View();
@@ -23,11 +25,7 @@ namespace OnlineCourseRegistration.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult SubmitRecord(StudentViewModel student)
-        { 
-            return View();
-        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
